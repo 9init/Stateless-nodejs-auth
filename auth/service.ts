@@ -24,7 +24,7 @@ passport.use("stateless", new CustomStrategy((req, done)=>{
     })
 }))
 
-passport.serializeUser((user: any, done)=>{
+passport.serializeUser<iUser>((user: any, done: (err: any, id: any) => void)=>{
     done(null, user.id)
 })
 

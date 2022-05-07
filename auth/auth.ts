@@ -15,10 +15,14 @@ const excludedPathsRegex: Array<RegExp> = [
     /^\/register/,
 ]
 
+// This middleware make sure that the user is authenticated
 function isLoggedIn(req: express.Request, res: express.Response, next: express.NextFunction){
     const pathCheck = excludedPathsRegex.some(path => path.test(req.path))
-    pathCheck || req.isAuthenticated() ? next() : res.redirect("/login")
+    pathCheck || req.isAuthenticated() ? next() : res.send("You are not logged in")
 }
+
+// activate the middleware
+router.use(isLoggedIn)
 
 // import handlers
 import {loginHandler, registerHandler, homeHandler} from "./service"
