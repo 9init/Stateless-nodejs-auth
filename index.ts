@@ -10,7 +10,7 @@ const host: string = process.env.HOST!
 const port: number = Number(process.env.PORT!)
 
 // Connect to database
-mongoose.connect(database)
+// mongoose.connect(database)
 
 // setting up express app
 const app = express()
