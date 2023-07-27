@@ -18,10 +18,10 @@ const excludedPathsRegex: Array<RegExp> = [
 // This middleware make sure that the user is authenticated
 function isLoggedIn(req: express.Request, res: express.Response, next: express.NextFunction){
     const pathCheck = excludedPathsRegex.some(path => path.test(req.path))
-    
+
     if(pathCheck || req.isAuthenticated()){
         next()
-        return  
+        return
     }
 
     res.status(401).send("You are not logged in");
